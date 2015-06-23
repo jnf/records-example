@@ -2,8 +2,46 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  # root 'welcome#index'
+
+  # resources :labels do
+  #   resources :albums
+  # end
+
+  resources :albums, only: [:index, :show] do
+    collection do
+      get 'released/:year', action: 'by_year', as: 'by_year'
+    end
+
+    member do
+
+    end
+  end
+
+  <%= link_to 'Albums for the year 1980', by_year_albums_path(1980) %>
+  # => '/albums/released/1980'
+  <%= link_to 'Albums for the year 1980', by_year_albums_url(1980) %>
+
+  # resources :albums, only: [:index, :show] do
+  #   collection do
+  #     get 'released/:year', action: 'by_year', as: 'by_year'
+  #   end
+  # end
+
+  # resources :people, only: [:index, :show] do
+  #   resources :tasks, only: [:index]
+  # end
+
+  # resources :tasks
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+  # resources :labels do
+  #   resources :albums
+  #   resources :artists do
+  #     resources :albums, only: [:index, :show]
+  #   end
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
