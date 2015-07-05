@@ -1,4 +1,4 @@
 <h2>Albums by <%= @artist.name %> <%= "released on #{ @label.title }" if @label %></h2>
 <ol>
-  <%= render @artist.albums %>
+  <%= render @label ? @artist.albums.on(@label) : @artist.albums %>
 </ol>
