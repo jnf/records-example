@@ -43,5 +43,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'awesome_print'
+
+  # requires graphiz--`brew install graphiz`
+  gem 'rails-erd'
 end
 
