@@ -1,4 +1,6 @@
 <h2>Here am Labels Yay</h2>
 <ol>
-  <%= render @labels, locals: { wrapper_tag: :li } %>
+  <% @labels.each do |label| %>
+    <li><%= link_to label.title, label_path(label) %></li>
+  <% end %>
 </ol>

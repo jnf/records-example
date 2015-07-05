@@ -1,0 +1,10 @@
+<% locals ||= {} %>
+<%= content_tag(locals.fetch(:tag, :li)) do %>
+  <em><%= link_to album.label_code, label_path(album.label) %></em>:
+  <strong><%= album.title %></strong>
+  <div class="details">
+    Released: <%= album.released_year %>
+    <br>
+    Format: <%= album.format %>
+  </div>
+<% end %>
