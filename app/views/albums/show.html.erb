@@ -1,0 +1,2 @@
+<h3>Album by <%= link_to @album.artist.name, artist_path(@album.artist) %></h3>
+<%= render @album, locals: { tag: :section } %>
