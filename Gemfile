@@ -44,7 +44,7 @@ group :development, :test do
 
   gem 'awesome_print'
 
-  # requires graphiz--`brew install graphiz`
+  # requires graphiz--`brew install graphviz`
   gem 'rails-erd'
 end
 
