@@ -1,4 +1,12 @@
 <h2>Add an Album!</h2>
+<ul>
+  <% @album.errors.each do |column, message| %>
+    <li>
+      <strong><%= column.capitalize %></strong> <%= message %>
+    </li>
+  <% end %>
+</ul>
+
 <%= form_for @album do |f| %>
   <% %w(title label_code format released_year).each do |field| %>
     <%= f.label field %>:
