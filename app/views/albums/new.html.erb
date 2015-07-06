@@ -8,11 +8,14 @@
 </ul>
 
 <%= form_for @album do |f| %>
-  <% %w(title label_code format released_year).each do |field| %>
+  <% %w(title label_code released_year).each do |field| %>
     <%= f.label field %>:
     <%= f.text_field field %>
     <br>
   <% end %>
+
+  <%= f.label :format %>
+  <%= f.select :format, Album.available_formats %>
 
   <%= f.submit %>
 <% end %>

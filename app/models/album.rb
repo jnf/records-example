@@ -11,4 +11,5 @@ class Album < ActiveRecord::Base
 
   # Scopes ---------------------------------------------------------------------
   scope :on, -> (label) { where(label: label) }
+  scope :available_formats, -> { select(:format).distinct.order(:format).pluck(:format) }
 end
