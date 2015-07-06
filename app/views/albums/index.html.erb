@@ -1,4 +1,7 @@
 <h2>ZOMG SO MANY ALBUMS ^_^</h2>
+<nav>
+  <%= link_to "New Album", new_album_path %>
+</nav>
 <ol>
   <% @albums.each do |album| %>
     <li><%= link_to album.title, album_path(album) %> (<%= album.artist.name %>)</li>
