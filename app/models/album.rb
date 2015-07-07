@@ -6,7 +6,7 @@ class Album < ActiveRecord::Base
   # Validations ----------------------------------------------------------------
   validates :title, presence: true
   validates :released_year, presence: true,
-            numericality: true, length: { is: 4 }
+            numericality: { only_integer: true }, length: { is: 4 }
   validates :format, presence: true
   validates :label_code, presence: true
 
