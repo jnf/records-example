@@ -4,10 +4,11 @@ class Album < ActiveRecord::Base
   belongs_to :label
 
   # Validations ----------------------------------------------------------------
-  # validates :title, presence: true
-  # validates :released_year, presence: true, numericality: true
-  # validates :format, presence: true
-  # validates :label_code, presence: true
+  validates :title, presence: true
+  validates :released_year, presence: true,
+            numericality: true, length: { is: 4 }
+  validates :format, presence: true
+  validates :label_code, presence: true
 
   # Scopes ---------------------------------------------------------------------
   scope :on, -> (label) { where(label: label) }
