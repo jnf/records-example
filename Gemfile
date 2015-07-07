@@ -46,5 +46,8 @@ group :development, :test do
 
   # requires graphiz--`brew install graphviz`
   gem 'rails-erd'
+
+  # yay tests yay
+  gem 'rspec-rails', '~> 3.0'
 end
 
