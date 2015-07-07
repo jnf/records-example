@@ -52,5 +52,6 @@ group :development, :test do
 
   # yay tests yay
   gem 'rspec-rails', '~> 3.0'
+  gem 'simplecov', require: false
 end
 
