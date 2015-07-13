@@ -5,17 +5,20 @@ class Artist < ActiveRecord::Base
 
   # Validations ----------------------------------------------------------------
   validates :name, presence: true, uniqueness: true
-  validate :uniqueness_of_names_containing_the
 
-  def uniqueness_of_names_containing_the
-    return unless name[0,4] == 'The ' #Thelonious Monk <--that should totes be a test
+  # Callbacks ------------------------------------------------------------------
+  before_validation :normalize_casing_in_names!,
+                    :normalize_names_with_the!
 
-    # check in the db if I've already got an Aritst using the preferred variant
-    modified_name = name.gsub(/^The\s+/, '') + ', The'
+  def normalize_names_with_the!
+    # converts 'The Clash' to 'Clash, The'
+    return unless self.name[0,4] == 'The '
 
-    # add an error if the modified name is in the database
-    if Artist.where(name: modified_name).count > 0
-      errors.add(:name_variant, "Some fancy error message about #{modified_name}.")
-    end
+    self.name = self.name.gsub(/^The\s+/, '') + ', The'
+  end
+
+  def normalize_casing_in_names!
+    # converts 'the clash' to 'The Clash'
+    self.name = self.name.titlecase
   end
 end
