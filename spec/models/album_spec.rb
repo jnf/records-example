@@ -52,18 +52,15 @@ RSpec.describe Album, type: :model do
 
   describe "on scope" do
     before :each do
-      @label = Label.create(title: 'Fancy Label')
-      Album.create(label: @label, title: 'a', released_year: 1999, label_code: 'l', format: 'a format')
-      Album.create(label: @label, title: 'b', released_year: 1999, label_code: 'l', format: 'a format')
-      Album.create(label: @label, title: 'c', released_year: 1999, label_code: 'l', format: 'a format')
-
-      some_other_label = Label.create(title: 'Unfancy Label')
-      @excluded_album = Album.create(label: some_other_label, title: 'd', released_year: 1999, label_code: 'l', format: 'a format')
+      @label = create(:label)
+      3.times { create(:album, label: @label) }
+      @excluded_album = create(:album, label: create(:label))
     end
 
     it "includes only the records on the provided label" do      
       expect(Album.on(@label).count).to eq 3
       expect(Album.on(@label)).to_not include(@excluded_album)
     end
+
   end
 end
