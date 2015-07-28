@@ -7,15 +7,31 @@
   <% end %>
 </ul>
 
-<%= form_for @album do |f| %>
-  <% %w(title label_code released_year).each do |field| %>
-    <%= f.label field %>:
-    <%= f.text_field field %>
-    <br>
-  <% end %>
+<%= form_for @album, html: { multipart: true } do |f| %>
+  <fieldset>
+    <legend>Album Details</legend>
+    <% %w(title label_code released_year).each do |field| %>
+      <%= f.label field %>:
+      <%= f.text_field field %>
+      <br>
+    <% end %>
+  </fieldset>
 
-  <%= f.label :format %>
-  <%= f.select :format, Album.available_formats %>
+  <fieldset>
+    <legend>Album Associations</legend>
+    <%= f.label :artist_id %>
+    <%= f.select :artist_id, Artist.available_artists %>
+
+    <br>
+
+    <%= f.label :label_id %>
+    <%= f.select :label_id, Label.available_labels %>
+
+    <br>
+
+    <%= f.label :format %>
+    <%= f.select :format, Album.available_formats %>
+  </fieldset>
 
   <%= f.submit %>
 <% end %>
