@@ -10,6 +10,10 @@ class Artist < ActiveRecord::Base
   before_validation :normalize_casing_in_names!,
                     :normalize_names_with_the!
 
+  # Scopes ---------------------------------------------------------------------
+  scope :available_artists, -> { distinct(:name).order(:name).pluck(:name, :id) }
+
+
   def normalize_names_with_the!
     # converts 'The Clash' to 'Clash, The'
     return unless self.name[0,4] == 'The '
