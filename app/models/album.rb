@@ -10,6 +10,9 @@ class Album < ActiveRecord::Base
   validates :format, presence: true
   validates :label_code, presence: true
 
+  # Mounted Objects ------------------------------------------------------------
+  mount_uploader :image, ImageUploader
+
   # Scopes ---------------------------------------------------------------------
   scope :on, -> (label) { where(label: label) }
   scope :available_formats, -> { select(:format).distinct.order(:format).pluck(:format) }
