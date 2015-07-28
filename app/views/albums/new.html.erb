@@ -31,6 +31,11 @@
 
     <%= f.label :format %>
     <%= f.select :format, Album.available_formats %>
+
+    <br>
+
+    <%= f.label :image, 'Cover Art' %>
+    <%= f.file_field :image %>
   </fieldset>
 
   <%= f.submit %>

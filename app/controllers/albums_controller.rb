@@ -23,6 +23,9 @@ class AlbumsController < ApplicationController
   private
 
   def album_creation_params
-    params.require(:album).permit(:title, :label_code, :format, :released_year)
+    params.require(:album).permit(
+      :title, :label_code, :format, :released_year,
+      :artist_id, :label_id, :image
+    )
   end
 end

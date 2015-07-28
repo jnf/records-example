@@ -10,5 +10,7 @@
       <br>
       Label: <%= link_to album.label.title, label_path(album.label) %>
     <% end %>
+
+    <%= image_tag album.image_url(:thumb) %>
   </div>
 <% end %>
