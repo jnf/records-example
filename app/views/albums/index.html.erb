@@ -4,6 +4,6 @@
 </nav>
 <ol>
   <% @albums.each do |album| %>
-    <li><%= link_to album.title, album_path(album) %> (<%= album.artist.name %>)</li>
+    <li><%= link_to album.title, album_path(album) %> (<%= album.artist.name if album.artist %>)</li>
   <% end %>
 </ol>
